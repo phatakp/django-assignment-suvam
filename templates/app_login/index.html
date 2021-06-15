@@ -1,0 +1,34 @@
+{% extends 'app_login/base.html' %}
+
+{% load static %}
+
+{% block content %}
+{% include 'app_login/navbar.html' %}
+<div class="container">
+    <h4 class="my-5">List of Registered Users</h4>
+    <a class="btn btn-primary mb-5" href="{% url 'app_login:register' %}">Add New User</a>
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No Registered Users yet</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

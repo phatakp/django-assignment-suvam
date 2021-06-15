@@ -1,0 +1,21 @@
+{% extends 'app_login/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'app_login/navbar.html' %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">New User</div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <input type="submit" class="btn btn-primary">
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
